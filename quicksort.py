@@ -18,6 +18,3 @@ def quickSort(nums, low, high):
 nums = [1,2,5,0,6,7]
 quickSort(nums, 0, 5)
 print("nums =",nums)
-
-
-

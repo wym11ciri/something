@@ -1,13 +1,17 @@
+import re
 import requests
+from bs4 import BeautifulSoup
 
-response = requests.get(url='https://www.baidu.com/')
-response.encoding = 'utf-8'
-print(response)  # <Response [200]>
-# 返回响应状态码
-print(response.status_code)  # 200
-# 返回响应文本
-# print(response.text)
-print(type(response.text))  # <class 'str'>
-#将爬取的内容写入xxx.html文件
-with open('baidu.html', 'w', encoding='utf-8') as f:
-    f.write(response.text)
+r = requests.get('http://jtzi7680ouhinbwk.mikecrm.com/r.php?t=4iyHrGY&s=2')
+soup = BeautifulSoup(r.text, 'lxml') #lxml为解析器
+elements = driver.find_elements_by_xpath("/html/body/div")
+
+#print(soup.title.string) #获取指定标签，获取指定标签里面的内容
+#print(soup('title'), soup('title')[0].string) #获取指定标签也可以写成这样
+#print(soup.meta.get('charset')) #获取指定标签的属性
+#print(soup.meta['charset']) #获取指定标签的属性也可写成这样
+#print(soup.meta) #获取第一个标签（多个只取第一个）
+#print(soup.find_all('div')) #获取第一个标签，结果和上面一样
+#print(soup.find('meta', attrs={'name':'viewport'})) #获取第一个标签，根据属性过滤获取
+#print(soup.find_all('meta', attrs={'charset':True})) #获取所有标签的列表，同时根据是否含有属性charset过滤获取
+print(soup.find_all(name='fbl_dfAnswer'))
